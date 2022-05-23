@@ -5,10 +5,14 @@ const categoriesRoutes = Router()
 const categoriesRepository = new CategoriesRepository()
 
 categoriesRoutes.post("/", (req, res) => {
-    const { name, description } = req.body
-    categoriesRepository.create({ name, description })
+  const { name, description } = req.body
 
-    return res.status(201).send()
+  const categoryAlreadyExists = categoriesRepository.findByName(name);
+  if(categoryAlreadyExists) return res.status(400).json({ error: "Category Already exist!" })
+
+  categoriesRepository.create({ name, description })
+
+  return res.status(201).send()
 })
 
 categoriesRoutes.get("/", (req, res) => {
