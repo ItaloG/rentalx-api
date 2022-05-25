@@ -18,15 +18,20 @@ class ImportCategoryUseCase {
 
       stream.pipe(parseFile);
 
-      parseFile.on("data", (line) => {
-        const [name, description] = line;
-        categories.push({
-          name,
-          description,
+      parseFile
+        .on("data", (line) => {
+          const [name, description] = line;
+          categories.push({
+            name,
+            description,
+          });
+        })
+        .on("end", () => {
+          resolve(categories);
+        })
+        .on("error", (err) => {
+          reject(err);
         });
-      }).on('end', () => {
-        resolve(categories)
-      })
     });
   }
 
