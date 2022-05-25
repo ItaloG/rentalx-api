@@ -10,24 +10,28 @@ interface IImportCategory {
 class ImportCategoryUseCase {
   constructor(private categoryRepository: ICategoriesRepository) {}
 
-  loadCategories(file: Express.Multer.File) {
-    const categories: IImportCategory[] = [];
-    const stream = fs.createReadStream(file.path);
-    const parseFile = csvParse();
+  loadCategories(file: Express.Multer.File): Promise<IImportCategory[]> {
+    return new Promise((resolve, reject) => {
+      const categories: IImportCategory[] = [];
+      const stream = fs.createReadStream(file.path);
+      const parseFile = csvParse();
 
-    stream.pipe(parseFile);
+      stream.pipe(parseFile);
 
-    parseFile.on("data", (line) => {
-      const [name, description] = line;
-      categories.push({
-        name,
-        description,
-      });
+      parseFile.on("data", (line) => {
+        const [name, description] = line;
+        categories.push({
+          name,
+          description,
+        });
+      }).on('end', () => {
+        resolve(categories)
+      })
     });
   }
 
-  execute(file: Express.Multer.File): void {
-    const categories = this.loadCategories(file);
+  async execute(file: Express.Multer.File): Promise<void> {
+    const categories = await this.loadCategories(file);
     console.log(categories);
   }
 }
