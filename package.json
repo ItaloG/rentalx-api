@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --poll --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "run:migration": "npx typeorm-ts-node-esm migration:run -d src/database/index.ts",
+    "revert:migration": "npx typeorm-ts-node-esm migration:revert -d src/database/index.ts"
   },
   "dependencies": {
     "csv-parse": "^5.1.0",
