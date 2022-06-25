@@ -10,7 +10,7 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = dataSource.getRepository(User);
   }
-  
+
   async create({
     name,
     email,
@@ -23,13 +23,18 @@ class UsersRepository implements IUsersRepository {
       password,
       driver_license,
     });
-    
+
     await this.repository.save(user);
   }
 
   async findByEmail(email: string): Promise<User> {
-    const user = await this.repository.findOne({where: { email}})
-    return user
+    const user = await this.repository.findOne({ where: { email } });
+    return user;
+  }
+
+  async findById(id: string): Promise<User> {
+    const user = await this.repository.findOne({ where: { id } });
+    return user;
   }
 }
 
