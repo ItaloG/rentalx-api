@@ -7,7 +7,8 @@
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --poll --respawn src/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
     "run:migration": "npx typeorm-ts-node-esm migration:run -d src/database/index.ts",
-    "revert:migration": "npx typeorm-ts-node-esm migration:revert -d src/database/index.ts"
+    "revert:migration": "npx typeorm-ts-node-esm migration:revert -d src/database/index.ts",
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -26,6 +27,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.4",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/multer": "^1.4.7",
     "@types/swagger-ui-express": "^4.1.3",
@@ -39,7 +41,9 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-import-helpers": "^1.2.1",
     "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^28.1.2",
     "prettier": "^2.6.2",
+    "ts-jest": "^28.0.5",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.4"
   }
