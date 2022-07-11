@@ -5,7 +5,7 @@ WORKDIR /usr/app
 
 COPY package.json ./
 
-RUN npm install -g npm@8.13.1
+RUN npm install -g npm@8.13.2
 
 COPY . .
 
