@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules --poll --respawn src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
-    "run:migration": "npx typeorm-ts-node-esm migration:run -d src/database/index.ts",
+    "run:migration": "npx typeorm-ts-node-esm migration:run -d src/shared/infra/typeorm/index.ts",
     "revert:migration": "npx typeorm-ts-node-esm migration:revert -d src/database/index.ts",
     "test": "jest"
   },
