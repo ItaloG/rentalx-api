@@ -9,7 +9,6 @@
       "@modules/*": ["modules/*"],
       "@config/*": ["config/*"],
       "@shared/*": ["shared/*"],
-      "@errors/*": ["errors/*"],
       "@database/*": ["database/*"],
       "@utils/*": ["utils/*"],
       "@middlewares/*": ["middlewares/*"]
