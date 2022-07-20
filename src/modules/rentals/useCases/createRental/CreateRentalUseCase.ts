@@ -10,8 +10,10 @@ interface IRequest {
 }
 
 class CreateRentalUseCase {
-  constructor(private rentalsRepository: IRentalsRepository,
-    private dateProvider: IDateProvider) {}
+  constructor(
+    private rentalsRepository: IRentalsRepository,
+    private dateProvider: IDateProvider
+  ) {}
   async execute({
     user_id,
     car_id,
@@ -31,7 +33,11 @@ class CreateRentalUseCase {
     if (rentalOpenToUser)
       throw new AppError("There's a rental in progress for user!");
 
-    const compare = this.dateProvider.compareInHours(expected_return_date, )
+    const dateNow = this.dateProvider.dateNow();
+    const compare = this.dateProvider.compareInHours(
+      dateNow,
+      expected_return_date
+    );
     if (compare < minimumHour) throw new AppError("Invalid return time!");
 
     const rental = await this.rentalsRepository.create({
