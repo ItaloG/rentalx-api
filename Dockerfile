@@ -1,13 +1,10 @@
-FROM node:16.15.1
-
+FROM node:lts
 
 WORKDIR /usr/app
 
-COPY package.json ./
-
-RUN npm install -g npm@8.13.2
-
 COPY . .
+
+RUN npm install -g npm@8.19.2 && npm install
 
 EXPOSE 3333
 

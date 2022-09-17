@@ -20,6 +20,8 @@ services:
       - 3333:3333
     volumes:
       - .:/usr/app
+    depends_on:
+      - database_ignite
 
 volumes:
   pgdata:
