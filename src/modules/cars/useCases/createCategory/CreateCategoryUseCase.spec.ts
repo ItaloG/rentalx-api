@@ -34,9 +34,9 @@ describe("Create Category", () => {
       name: "Category Test",
       description: "Category description Test",
     };
-    expect(async () => {
-      await createCategoryUseCase.execute(category);
-      await createCategoryUseCase.execute(category);
-    }).rejects.toBeInstanceOf(AppError);
+    await createCategoryUseCase.execute(category);
+    await expect(
+      createCategoryUseCase.execute(category)
+    ).rejects.toEqual(new AppError("Category already exists!"));
   });
 });

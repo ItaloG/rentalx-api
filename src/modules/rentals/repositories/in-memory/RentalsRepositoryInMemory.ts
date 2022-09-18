@@ -28,12 +28,20 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
       car_id,
       expected_return_date,
       user_id,
-      start_date: new Date()
+      start_date: new Date(),
     });
 
     this.rentals.push(rental);
 
     return rental;
+  }
+
+  async findById(id: string): Promise<Rental> {
+    return this.rentals.find((rental) => rental.id === id);
+  }
+
+  async findByUser(user_id: string): Promise<Rental[]> {
+    return this.rentals.filter((rental) => rental.user_id === user_id);
   }
 }
 
