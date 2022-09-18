@@ -2,7 +2,7 @@ import { DataSource } from "typeorm";
 
 const dataSource = new DataSource({
   type: "postgres",
-  host: "database_ignite", // change localhost to run migration
+  host: "localhost", // change localhost to run migration
   port: 5432,
   username: "docker",
   password: "ignite",
