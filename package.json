@@ -11,6 +11,7 @@
     "test": "jest --runInBand"
   },
   "dependencies": {
+    "aws-sdk": "^2.1220.0",
     "bcrypt": "^5.0.1",
     "csv-parse": "^5.1.0",
     "dayjs": "^1.11.4",
