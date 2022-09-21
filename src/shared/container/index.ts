@@ -14,7 +14,6 @@ import { RentalsRepository } from "@modules/rentals/infra/typeorm/repositories/R
 
 import "@shared/container/providers"
 import { IUserTokensRepository } from "@modules/accounts/repositories/IUsersTokenRepository";
-import { UserToken } from "@modules/accounts/infra/typeorm/entities/UserToken";
 import { UsersTokenRepository } from "@modules/accounts/infra/typeorm/repositories/UsersTokenRepository";
 
 container.registerSingleton<ICategoriesRepository>(
